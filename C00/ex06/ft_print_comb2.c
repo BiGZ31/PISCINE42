@@ -1,49 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_comb.c                                    :+:      :+:    :+:   */
+/*   ft_print_comb2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmontgom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/09 17:19:43 by lmontgom          #+#    #+#             */
-/*   Updated: 2022/03/10 17:23:02 by lmontgom         ###   ########.fr       */
+/*   Created: 2022/03/10 23:28:47 by lmontgom          #+#    #+#             */
+/*   Updated: 2022/03/10 23:30:48 by lmontgom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_print_comb(void)
+void	ft_putnbr(int nb)
 {
-	char	a;
-	char	b;
 	char	c;
 
-	c = '0';
-	while (c <= '9')
-	{	
-		a = c + 1;
-		while (a <= '9')
-		{
-			b = a + 1;
-			while (b <= '9')
-			{
-				if (c != a && a != b && b != c)
-				{
-					write(1, &c,1);
-					write(1, &a,1);
-					write(1, &b, 1);
-					if(c < '7')
-						write(1, ", ", 2);
-					
-				}
-				b++;
-			}
-			a++;	
-		}	
-		c++;		
+	if (nb < 0)
+	{
+		write(1, "-", 1);
+		nb = -nb;
 	}
+	if (nb > 9)
+		ft_putnbr(nb / 10);
+	c = '0' + nb % 10;
+	write(1, &c, 1);
 }
+void ft_print_comb2(void);
+{
+	
+
+
+
+}
+
+
+
 void	main(void)
 {
-	ft_print_comb();
+	ft_putnbr(42);
 }
